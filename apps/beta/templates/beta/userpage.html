@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>UserPage</title>
+	<link rel="stylesheet" href="../../static/beta/css/userpage/style.css">
+</head>
+
+<body>
+
+<div class='topbar'>
+	<h1>Welcome to ApPoints</h1>
+	<p>Hi, {{user.first_name}}</p>
+	<a href="/logout">Logout</a>
+</div>
+
+<div class="content">
+	<div class="makeapp">
+		<h3>Make Appointment (Dr.{{doctor.first_name}}'s schedule)</h3>
+		<!-- <p>You have {{count}} appoints ahead</p> -->
+		<span class="underline"></span>
+
+		<table id="schedule">
+			<tr>
+				<th>From</th>
+				<th>To</th>
+				<th>Schedule</th>
+			</tr>
+
+			{% for schedule in schedules %}
+			<tr>
+				<td>{{schedule.start}}</td>
+				<td>{{schedule.end}}</td>
+				<td><a href="appoint/{{schedule.id}}"><button>Appoint</button></a></td>
+			</tr>
+		{% endfor %}
+			
+		</table>
+	</div>
+
+	<div class="comingapp">
+		<h3>Upcoming Appointments</h3>
+		<span class="underline"></span>
+
+		<table id="confirm">
+			<tr>
+				<th>Subject</th>
+				<th>From</th>
+				<th>To</th>
+				<th>Status</th>
+			</tr>
+			
+			{% for appoint in appointments %}
+				{% if appoint.rejected == 2 %}
+				<tr>
+					<td>{{appoint.subject}}</td>
+					<td>{{appoint.start}}</td>
+					<td>{{appoint.end}}</td>
+					<td><a href="/cancel/{{appoint.id}}"><button onclick ="">Cancel</button></a></td>
+				</tr>
+				{% endif %}
+				{% if appoint.rejected == 0 %}
+				<tr>
+					<td>{{appoint.subject}}</td>
+					<td>{{appoint.start}}</td>
+					<td>{{appoint.end}}</td>
+					<td><span id="pending">PENDING</span></td>
+				</tr>
+				{% endif %}
+				{% if appoint.rejected == 1 %}
+				<tr>
+					<td>{{appoint.subject}}</td>
+					<td>{{appoint.start}}</td>
+					<td>{{appoint.end}}</td>
+					<td><span id="reject">REJECTED</span></td>
+				</tr>
+				{% endif %}
+			{% endfor%}
+		</table>
+	</div>
+	
+</body>
+</html>

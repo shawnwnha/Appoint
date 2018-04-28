@@ -1,0 +1,134 @@
+* {
+    margin:0;
+    padding: 0;
+}
+
+body {
+    background-color:rgba(201, 196, 196, 0.5);
+    font-family: 'Open Sans', sans-serif;
+    color: rgb(87, 82, 82);
+}
+.topbar{
+    width: 100%;
+    height: 50px;
+    background:linear-gradient(#64c9c9, #24aeae);
+}
+
+.topbar h1 {
+    color:white;
+    display: inline-block;
+    margin-left:15px;
+    vertical-align: top;
+}
+.topbar p {
+    color:white;
+    font-size:16px;
+    display: inline-block;
+    margin-left: 60%;
+    margin-top: 20px;
+
+}
+.topbar a{
+    text-decoration: none;
+    color:white;
+    font-size:16px;
+    display: inline-block;
+    margin-left: 40px;
+    margin-top: 20px;
+}
+.content {
+    text-align: center;
+    margin-top:20px;
+}
+.makeapp, .comingapp{
+    width: 45%;
+    height: 200px;
+    background-color: white;
+    border-radius: 5px;
+    box-shadow: 6px 6px 5px rgb(138, 137, 137);
+    margin:20px;
+    padding: 20px;
+    overflow: scroll;
+    display: inline-block;
+}
+
+/* .comingapp {
+    width: 45%;
+    height: 200px;
+    background-color: white;
+    border-radius: 5px;
+    box-shadow: 6px 6px 5px rgb(138, 137, 137);
+    display: inline-block;
+    margin:20px;
+    padding: 20px;
+    overflow: scroll;
+} */
+
+.makeapp h3{
+    font-size: 20px;
+    color:#37a8a8;
+}
+
+.underline {
+    margin-top:10px;
+    display: block;
+    width:100%;
+    height:1px;
+    background-color:rgb(187, 180, 180);
+}
+
+#schedule th,td {
+    border-bottom:1px solid rgb(187, 180, 180);
+    padding:10px 60px;
+}
+
+#schedule td {
+    font-size: 14px;
+}
+
+#confirm td {
+    font-size: 14px;
+}
+
+.makeapp table button {
+    background-color:#23b35f;
+    border-radius: 5px;
+    padding: 10px 10px;
+    text-align: center;
+    border:none;
+    color:white;
+    font-weight: 500;
+    text-decoration: none;
+}
+
+.comingapp h3{
+    font-size: 20px;
+    color:#37a8a8;
+}
+
+#confirm th,td {
+    border-bottom:1px solid rgb(187, 180, 180);
+    padding:10px 25px;
+}
+
+.comingapp table button {
+    background-color:#37a8a8;
+    border-radius: 5px;
+    padding: 10px 10px;
+    text-align: center;
+    border:none;
+    color:white;
+    font-weight: 500;
+    text-decoration: none;
+}
+
+
+#pending {
+    font-size: 14px;
+    color: rgb(13, 157, 13);
+}
+
+#reject {
+    font-size: 14px;
+    color: rgb(228, 75, 20);
+}

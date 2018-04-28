@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        * {
+            font-family: 'Open Sans', sans-serif;
+            /* text-align: center; */
+        }
+
+        body {
+            padding: 0;
+            margin: 0;
+        }
+
+        .error {
+            color: rgb(235, 78, 31);
+        }
+
+        .topbar {
+            width: 100%;
+            height: 50px;
+            background-color: #37a8a8;
+            background: linear-gradient(to right, #37a8a8, #025757);
+            padding-left: 20px;
+            opacity: 0.8;
+            position: relative;
+        }
+
+        .topbar h1 {
+            color: white;
+            display: inline-block;
+            margin-left: 10px;
+            margin-top: 5px;
+        }
+
+        .topbar span {
+            display: inline-block;
+            position: absolute;
+            top: 20px;
+            right: 150px;
+            color: white;
+        }
+
+        .topbar a {
+            text-decoration: none;
+            color: white;
+            font-size: 16px;
+            display: inline-block;
+            position: absolute;
+            top: 20px;
+            right: 50px;
+        }
+
+        #top {
+            font-size: 25px;
+            color: white;
+            font-weight: bold;
+        }
+
+        .wrapper {
+            box-shadow: 6px 6px 5px rgb(138, 137, 137);
+            background: linear-gradient(to right, #37a8a8, #025757);
+            color: white;
+            display: inline-block;
+            width: 40%;
+            margin-top: 200px;
+            margin-left: 400px;
+            height: 250px;
+            padding: 20px;
+            text-align: center;
+        }
+
+        #button {
+            margin-top: 10px;
+            width: 100px;
+            height: 30px;
+            color: black;
+            background-color: white;
+            font-weight: bold;
+            border: 2px solid #37a8a8;
+        }
+
+        #tag {
+            font-weight: bold;
+            color: black;
+        }
+
+        input[type=datetime-local] {
+            border: 2px solid #37a8a8;
+        }
+
+        form {
+            text-align: center;
+        }
+
+        table {
+            display: inline-block;
+        }
+    </style>
+</head>
+
+<body>
+    <div class='topbar' id="topbar">
+        <h1>Welcome to ApPoints</h1>
+        <span>Hi,{{request.session.first_name}}</span>
+        <a href="/logout">Logout</a>
+    </div>
+    <div class="wrapper">
+        <p id="top">Add Schedule</p>
+        <form action="/homepage/addshedules" method="post">
+            {% csrf_token %}
+            <table>
+                <tr>
+                    <td>Start:</td>
+                    <td>
+                        <input type="datetime-local" name="start">
+                    </td>
+                </tr>
+                <tr>
+                    <td>End:</td>
+                    <td>
+                        <input type="datetime-local" name="end">
+                    </td>
+                </tr>
+            </table>
+            <br>
+            <input type="submit" id="button" value="ADD">
+        </form>
+        <p class="error">{{error}}</p>
+    </div>
+</body>
+
+</html>

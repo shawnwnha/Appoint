@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title></title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'beta/css/homepage.css' %}" media="screen" title="no title" charset="utf-8">
+</head>
+
+<body>
+    <div class='topbar'>
+        <h1>Welcome to ApPoints</h1>
+        <span>Hi,{{request.session.first_name}}</span>
+        <a href="/logout">Logout</a>
+    </div>
+
+    <div class="maincontent">
+    <div class="container">
+        <div class="appocontent">
+            <h3><img src="../../static/beta/images/homepage/calendar1.png" width="25" height="25">  Unconfirmed appointments</h3>
+            <span> </span>
+            <br>
+            <table>
+                <tr>
+                    <th>Patient</th>
+                    <th>Start</th>
+                    <th>End</th>
+                    <th>Description</th>
+                    <th>Action</th>
+                </tr>
+                {% for unconfirmedappo in unconfirmedappos %}
+                <tr>
+                    <td>{{unconfirmedappo.user.first_name}}</td>
+                    <td>{{unconfirmedappo.start}}</td>
+                    <td>{{unconfirmedappo.end}}</td>
+                    <td>{{unconfirmedappo.subject}}</td>
+                    <td>
+                        <a href="/homepage/accept/{{unconfirmedappo.id}}">
+                            <button>Confirm</button>
+                        </a>
+                        &nbsp;
+                        <a href="/homepage/reject/{{unconfirmedappo.id}}">
+                            <button>Reject</button>
+                        </a>
+                    </td>
+                </tr>
+                {% endfor %}
+            </table>
+        </div>
+
+        <div class="appocontent">
+            <h3><img src="../../static/beta/images/homepage/calendar3.png" width="25" height="25">  Confirmed appoinments</h3>
+            <span> </span>
+            <br>
+            <table>
+                <tr>
+                    <th>Patient</th>
+                    <th>Start</th>
+                    <th>End</th>
+                    <th>Description</th>
+                </tr>
+                {% for confirmedappo in confirmedappos %}
+                <tr>
+                    <td>{{confirmedappo.user.first_name}}</td>
+                    <td>{{confirmedappo.start}}</td>
+                    <td>{{confirmedappo.end}}</td>
+                    <td>{{confirmedappo.subject}}</td>
+                </tr>
+                {% endfor %}
+            </table>
+        </div>
+    </div>
+    
+        <div class="schecontent">
+        <div class="fix">
+            <h3><img src="../../static/beta/images/homepage/calendar2.png" width="25" height="25">  Schedules</h3>
+            <span> </span>
+        </div>
+            <br>
+            <table>
+                <tr>
+                    <th>Start</th>
+                    <th>End</th>
+                </tr>
+                {% for schedule in schedules %}
+                <tr>
+                    <td>{{schedule.start}}</td>
+                    <td>{{schedule.end}}</td>
+                </tr>
+                {% endfor %}
+            </table>
+            <a href="/homepage/addshedule">
+
+                <img src="../../static/beta/images/homepage/newadd.jpeg" alt="add" width="37" height="32" >
+            </a>
+        </div>
+    </div>
+
+</body>
+
+</html>

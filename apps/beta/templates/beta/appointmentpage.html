@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>This is appointment page</title>
+    <style>
+        *{
+            text-align: center;
+            color:#37a8a8;
+        }    
+        form{
+            display: inline-block;
+        }
+        body {
+            background-color:rgba(201, 196, 196, 0.6);
+            font-family: 'Open Sans', sans-serif;
+        }
+        #wrapper{
+            margin-top: 200px;
+            background-color:white;
+            box-shadow: 6px 6px 5px rgb(138, 137, 137);
+            width: 1000px;
+            height: 260px;
+            display: inline-block;
+        }
+        #top{
+            background:linear-gradient(#64c9c9, #24aeae);
+            color:white;
+            width: 100%;
+            display: inline-block;
+            line-height: 100%;
+        }
+        h1{
+            color:white;
+        }
+        table{
+            display: inline-block;
+        }
+        table p{
+            color:black;
+        }
+        #button{
+            background-color:#23b35f;
+            border-radius: 5px;
+            padding: 10px 10px;
+            text-align: center;
+            border:none;
+            color:white;
+            text-decoration: none;
+        }
+        #reason p{
+            text-align: left;
+            margin-left:160px;
+            font-size: 20px;
+        }
+        #text {
+            width: 300px;
+            height: 30px;
+        }
+
+    </style>
+</head>
+<body>
+    <div id = "wrapper">
+    <div id ="top"><h1>Make Appointment: DR. {{schedule.user.first_name}}</h1></div>
+    <table>
+        <tr>
+            <th><p>Date: {{schedule.start}} -</p></th>
+            <th><p>{{schedule.end}}</p></th>
+        </tr>
+    </table>
+   <div id ="reason">
+        <p>Description:</p> 
+        <form action="confirm/{{schedule.id}}" method ='post'>
+            {% csrf_token %}
+            <label for="subject"><input type="text" name ="subject" id="text"></label>
+            <input type="submit" id ="button" value ="Request Appointment">
+        </form>
+    </div>
+    </div>
+</body>
+</html>
